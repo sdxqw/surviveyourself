@@ -73,7 +73,7 @@ public class Core implements LWJGL {
 
     private void setGLFWCallbacks(long nvg, long window, InputManager inputManager) {
         GLFW.glfwSetKeyCallback(window, inputManager.createKeyCallback(nvg));
-        GLFW.glfwSetCursorPosCallback(window, inputManager.createMouseMoveCallback(nvg));
+        GLFW.glfwSetCursorPosCallback(window, inputManager.createMouseMoveCallback());
         GLFW.glfwSetMouseButtonCallback(window, inputManager.createMouseButtonCallback(nvg));
     }
 }

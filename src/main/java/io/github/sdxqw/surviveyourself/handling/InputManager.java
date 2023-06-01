@@ -45,7 +45,7 @@ public class InputManager {
         };
     }
 
-    public GLFWCursorPosCallback createMouseMoveCallback(long nvg) {
+    public GLFWCursorPosCallback createMouseMoveCallback() {
         return new GLFWCursorPosCallback() {
             @Override
             public void invoke(long window, double xpos, double ypos) {
