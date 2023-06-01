@@ -67,10 +67,17 @@ public class Core implements LWJGL {
         if (uiScreen instanceof World) {
             theWorld = (World) uiScreen;
             theWorld.initWorld();
+            if (theCurrentScreen != null) {
+                theCurrentScreen.clearScreen(nvg, window);
+            }
             theCurrentScreen = null;
         } else {
+            if (theCurrentScreen != null) {
+                theCurrentScreen.clearScreen(nvg, window);
+            }
             ((IScreen) uiScreen).initScreen(nvg, window);
             theCurrentScreen = (IScreen) uiScreen;
+            theWorld = null;
         }
     }
 

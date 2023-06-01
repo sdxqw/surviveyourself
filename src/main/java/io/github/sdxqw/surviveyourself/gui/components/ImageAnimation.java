@@ -2,6 +2,7 @@ package io.github.sdxqw.surviveyourself.gui.components;
 
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
 import io.github.sdxqw.surviveyourself.handling.ResourceManager;
+import io.github.sdxqw.surviveyourself.logging.SurvivalException;
 import io.github.sdxqw.surviveyourself.utils.Utils;
 import lombok.Setter;
 
@@ -59,7 +60,7 @@ public class ImageAnimation {
 
     public void setAnimationRange(int startFrameIndex, int endFrameIndex) {
         if (startFrameIndex < 0 || endFrameIndex >= frameLocations.size() || startFrameIndex > endFrameIndex) {
-            throw new IllegalArgumentException("Invalid animation range");
+            throw new SurvivalException("Invalid animation range");
         }
 
         this.startFrameIndex = startFrameIndex;

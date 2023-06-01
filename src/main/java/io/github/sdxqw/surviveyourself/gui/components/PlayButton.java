@@ -51,7 +51,7 @@ public class PlayButton implements InputManager.MouseHandler, IComponent, ICompo
         }
 
         if (xPos >= x && xPos <= x + width && yPos >= y && yPos <= y + height) {
-            playButtonImage.setAnimationRange(0, 1);
+            playButtonImage.setCurrentFrameIndex(1);
         } else {
             playButtonImage.setCurrentFrameIndex(0);
         }
