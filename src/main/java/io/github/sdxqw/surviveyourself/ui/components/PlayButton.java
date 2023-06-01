@@ -1,33 +1,31 @@
 package io.github.sdxqw.surviveyourself.ui.components;
 
-import io.github.sdxqw.surviveyourself.handling.InputHandler;
+import io.github.sdxqw.surviveyourself.Core;
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
-import io.github.sdxqw.surviveyourself.ui.basics.InputManager;
-import io.github.sdxqw.surviveyourself.ui.basics.UiScreen;
+import io.github.sdxqw.surviveyourself.ui.basics.Component;
+import io.github.sdxqw.surviveyourself.handling.InputManager;
+import org.lwjgl.glfw.GLFW;
 
-public class PlayButton implements UiScreen.Component, InputHandler {
-    private ImageAnimation playButtonImage;
-
+public class PlayButton implements InputManager.MouseHandler, Component {
     private final int x;
     private final int y;
-
     private final int width;
     private final int height;
+    private ImageAnimation playButtonImage;
 
     public PlayButton(int x, int y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        initButton();
     }
 
-    @Override
-    public void init(long nvg, long window) {
-        InputManager.getInstance().registerMouseHandler(this);
-        this.playButtonImage = new ImageAnimation(0.5f);
+    private void initButton() {
+        this.playButtonImage = new ImageAnimation(Core.getTheCore().getResourceManager(), 0.5f);
         this.playButtonImage.addFrame(
-                new Image(nvg, new ResourceLocation("/textures/ui/button/play_button1.png")),
-                new Image(nvg, new ResourceLocation("/textures/ui/button/play_button2.png")));
+                new ResourceLocation("/textures/ui/button/play_button1.png"),
+                new ResourceLocation("/textures/ui/button/play_button2.png"));
     }
 
     @Override
@@ -37,7 +35,7 @@ public class PlayButton implements UiScreen.Component, InputHandler {
 
     @Override
     public void update(long nvg, long window, float deltaTime) {
-
+        playButtonImage.update(deltaTime);
     }
 
     @Override
@@ -46,26 +44,15 @@ public class PlayButton implements UiScreen.Component, InputHandler {
     }
 
     @Override
-    public void handleKeyPress(long nvg, long window, int keyCode) {
+    public void handleMouseInput(long nvg, long window, int button, int action, double xPos, double yPos) {
+        if (button == GLFW.GLFW_MOUSE_BUTTON_LEFT && action == GLFW.GLFW_PRESS && xPos >= x && xPos <= x + width && yPos >= y && yPos <= y + height) {
+            Core.getTheCore().displayWorldScreen();
+        }
 
-    }
-
-    @Override
-    public void handleKeyRelease(long nvg, long window, int keyCode) {
-
-    }
-
-    @Override
-    public void handleMouseMove(long nvg, long window, double xpos, double ypos) {
-        if (xpos >= x && xpos <= x + width && ypos >= y && ypos <= y + height) {
-           this.playButtonImage.setCurrentFrameIndex(1);
-        } else this.playButtonImage.setCurrentFrameIndex(0);
-    }
-
-    @Override
-    public void handleMouseButton(long nvg, long window, int button, int action, int mods) {
-        if (button == 0) {
-            System.out.println("test");
+        if (xPos >= x && xPos <= x + width && yPos >= y && yPos <= y + height) {
+            playButtonImage.setAnimationRange(0 ,1);
+        } else {
+            playButtonImage.setCurrentFrameIndex(0);
         }
     }
 }

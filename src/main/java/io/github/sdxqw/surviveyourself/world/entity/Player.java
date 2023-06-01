@@ -1,20 +1,19 @@
 package io.github.sdxqw.surviveyourself.world.entity;
 
-import io.github.sdxqw.surviveyourself.handling.InputHandler;
+import io.github.sdxqw.surviveyourself.Core;
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
-import io.github.sdxqw.surviveyourself.ui.basics.InputManager;
-import io.github.sdxqw.surviveyourself.ui.basics.UiScreen;
-import io.github.sdxqw.surviveyourself.ui.components.Image;
+import io.github.sdxqw.surviveyourself.ui.basics.Component;
+import io.github.sdxqw.surviveyourself.handling.InputManager;
 import io.github.sdxqw.surviveyourself.ui.components.ImageAnimation;
 import io.github.sdxqw.surviveyourself.utils.Utils;
 import lombok.Getter;
 import org.lwjgl.glfw.GLFW;
 
 @Getter
-public class Player implements InputHandler, UiScreen.Component {
+public class Player implements InputManager.KeyboardHandler, Component {
 
     private final float speed = 1.2f;
-    private ImageAnimation playerSkin;
+    private final ImageAnimation playerSkin;
     private float x = Utils.width >> 1;
     private float y = Utils.height >> 1;
     private boolean moveUp = false;
@@ -23,26 +22,25 @@ public class Player implements InputHandler, UiScreen.Component {
     private boolean moveRight = false;
     private int lastAnimationStartIndex = 0;
 
-    @Override
-    public void init(long nvg, long window) {
+    public Player() {
         InputManager.getInstance().registerKeyHandler(GLFW.GLFW_KEY_W, this);
         InputManager.getInstance().registerKeyHandler(GLFW.GLFW_KEY_A, this);
         InputManager.getInstance().registerKeyHandler(GLFW.GLFW_KEY_S, this);
         InputManager.getInstance().registerKeyHandler(GLFW.GLFW_KEY_D, this);
-        this.playerSkin = new ImageAnimation(0.3f);
+        this.playerSkin = new ImageAnimation(Core.getTheCore().getResourceManager(), 0.3f);
         this.playerSkin.addFrame(
-                new Image(nvg, new ResourceLocation("/textures/player/forward/fw1.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/forward/fw2.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/forward/fw3.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/backwards/bw1.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/backwards/bw2.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/backwards/bw3.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/left/lf1.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/left/lf2.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/left/lf3.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/rigth/rt1.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/rigth/rt3.png")),
-                new Image(nvg, new ResourceLocation("/textures/player/rigth/rt2.png"))
+                new ResourceLocation("/textures/player/forward/fw1.png"),
+                new ResourceLocation("/textures/player/forward/fw2.png"),
+                new ResourceLocation("/textures/player/forward/fw3.png"),
+                new ResourceLocation("/textures/player/backwards/bw1.png"),
+                new ResourceLocation("/textures/player/backwards/bw2.png"),
+                new ResourceLocation("/textures/player/backwards/bw3.png"),
+                new ResourceLocation("/textures/player/left/lf1.png"),
+                new ResourceLocation("/textures/player/left/lf2.png"),
+                new ResourceLocation("/textures/player/left/lf3.png"),
+                new ResourceLocation("/textures/player/right/rt1.png"),
+                new ResourceLocation("/textures/player/right/rt2.png"),
+                new ResourceLocation("/textures/player/right/rt3.png")
         );
     }
 
@@ -119,8 +117,7 @@ public class Player implements InputHandler, UiScreen.Component {
         playerSkin.cleanup();
     }
 
-    @Override
-    public void handleKeyPress(long nvg, long window, int keyCode) {
+    public void handleKeyPress(int keyCode) {
         if (keyCode == GLFW.GLFW_KEY_W) {
             if (!moveUp) {
                 playerSkin.setAnimationRange(4, 5);
@@ -148,8 +145,7 @@ public class Player implements InputHandler, UiScreen.Component {
         }
     }
 
-    @Override
-    public void handleKeyRelease(long nvg, long window, int keyCode) {
+    public void handleKeyRelease(int keyCode) {
         if (keyCode == GLFW.GLFW_KEY_W) {
             moveUp = false;
         } else if (keyCode == GLFW.GLFW_KEY_A) {
@@ -166,13 +162,13 @@ public class Player implements InputHandler, UiScreen.Component {
         }
     }
 
-    @Override
-    public void handleMouseMove(long nvg, long window, double xpos, double ypos) {
-
-    }
 
     @Override
-    public void handleMouseButton(long nvg, long window, int button, int action, int mods) {
-
+    public void handleKeyEvent(long nvg, long window, int keyCode, int action) {
+        if (action == GLFW.GLFW_PRESS) {
+            handleKeyPress(keyCode);
+        } else if (action == GLFW.GLFW_RELEASE) {
+            handleKeyRelease(keyCode);
+        }
     }
 }

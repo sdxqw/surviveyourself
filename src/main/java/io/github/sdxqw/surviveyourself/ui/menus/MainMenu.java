@@ -1,39 +1,41 @@
 package io.github.sdxqw.surviveyourself.ui.menus;
 
 import io.github.sdxqw.surviveyourself.Core;
-import io.github.sdxqw.surviveyourself.handling.InputHandler;
-import io.github.sdxqw.surviveyourself.ui.basics.InputManager;
-import io.github.sdxqw.surviveyourself.ui.basics.UiScreen;
+import io.github.sdxqw.surviveyourself.handling.InputManager;
+import io.github.sdxqw.surviveyourself.ui.basics.Screen;
 import io.github.sdxqw.surviveyourself.ui.components.PlayButton;
-import io.github.sdxqw.surviveyourself.world.World;
 import org.lwjgl.glfw.GLFW;
 
-public class MainMenu extends UiScreen implements InputHandler {
+public class MainMenu implements InputManager.MouseHandler, Screen {
+
+    private PlayButton playButton;
 
     @Override
     public void initScreen(long nvg, long window) {
-        InputManager.getInstance().registerKeyHandler(GLFW.GLFW_KEY_ESCAPE,this);
-        this.addComponent(new PlayButton(100, 100, 60, 40));
-        super.initScreen(nvg, window);
+        Core.getTheCore().getInputManager().unregisterMouseHandler(this);
+        Core.getTheCore().getInputManager().registerMouseHandler(this);
+        playButton = new PlayButton(100, 100, 90, 60);
     }
 
     @Override
-    public void handleKeyPress(long nvg, long window, int keyCode) {
-        if (keyCode == GLFW.GLFW_KEY_ESCAPE) {;
-            Core.getTheCore().displayUiScreen(nvg, window, new World());
+    public void drawScreen(long nvg, long window) {
+        playButton.render(nvg, window);
+    }
+
+    @Override
+    public void updateScreen(long nvg, long window, float deltaTime) {
+        playButton.update(nvg, window, deltaTime);
+    }
+
+    @Override
+    public void clearScreen(long nvg, long window) {
+        playButton.cleanup(nvg, window);
+    }
+
+    @Override
+    public void handleMouseInput(long nvg, long window, int button, int action, double xPos, double yPos) {
+        if (button == GLFW.GLFW_MOUSE_BUTTON_LEFT && action == GLFW.GLFW_PRESS) {
+            playButton.handleMouseInput(nvg, window, button, action, xPos, yPos);
         }
-    }
-
-    @Override
-    public void handleKeyRelease(long nvg, long window, int keyCode) {}
-
-    @Override
-    public void handleMouseMove(long nvg, long window, double xpos, double ypos) {
-
-    }
-
-    @Override
-    public void handleMouseButton(long nvg, long window, int button, int action, int mods) {
-
     }
 }
