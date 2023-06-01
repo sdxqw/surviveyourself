@@ -58,8 +58,8 @@ public class PlayButton implements UiScreen.Component, InputHandler {
     @Override
     public void handleMouseMove(long nvg, long window, double xpos, double ypos) {
         if (xpos >= x && xpos <= x + width && ypos >= y && ypos <= y + height) {
-            handleMouseButton(nvg, window, 0, 0, 0);
-        }
+           this.playButtonImage.setCurrentFrameIndex(1);
+        } else this.playButtonImage.setCurrentFrameIndex(0);
     }
 
     @Override

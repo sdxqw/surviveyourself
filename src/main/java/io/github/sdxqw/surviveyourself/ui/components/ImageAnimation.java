@@ -1,11 +1,14 @@
 package io.github.sdxqw.surviveyourself.ui.components;
 
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ImageAnimation {
     private final List<Image> frames;
     private final float frameDuration;
+    @Setter
     private int currentFrameIndex;
     private int startFrameIndex;
     private int endFrameIndex;
