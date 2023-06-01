@@ -18,7 +18,7 @@ public class World implements IScreen.Renderable, InputManager.KeyboardHandler {
         Core.getTheCore().getTheInputManager().registerKeyHandler(GLFW.GLFW_KEY_ESCAPE, this);
         Core.getTheCore().getTheInputManager().registerKeyHandler(GLFW.GLFW_PRESS, this);
         player = new Player();
-        block = new Block(100, 100, 80, 32, Material.Type.BOAT);
+        block = new Block(100, 100, 160, 64, Material.Type.BOAT);
     }
 
     @Override
