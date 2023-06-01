@@ -16,8 +16,8 @@ public class Image {
         location.setId(resourceManager.loadImage(location.getPath()));
     }
 
-    public void render(float x, float y, float width, float height, int alpha) {
-        Utils.drawImage(resourceManager.getNvg(), location, x, y, width, height, alpha);
+    public void render(float x, float y, float width, float height) {
+        Utils.drawImage(resourceManager.getNvg(), location, x, y, width, height, 255);
     }
 
     public void cleanup() {

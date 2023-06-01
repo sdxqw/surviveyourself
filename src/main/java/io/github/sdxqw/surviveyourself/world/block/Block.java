@@ -7,7 +7,7 @@ import io.github.sdxqw.surviveyourself.ui.components.Image;
 import lombok.Getter;
 
 @Getter
-public class Block implements IComponent, IComponent.Updatable {
+public class Block implements IComponent {
 
     private final Image blockImage;
 
@@ -28,12 +28,7 @@ public class Block implements IComponent, IComponent.Updatable {
 
     @Override
     public void render(long nvg, long window) {
-        blockImage.render(x, y, width, height, 255);
-    }
-
-    @Override
-    public void update(long nvg, long window, float deltaTime) {
-
+        blockImage.render(x, y, width, height);
     }
 
     @Override

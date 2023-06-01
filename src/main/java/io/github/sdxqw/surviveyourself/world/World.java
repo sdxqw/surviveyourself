@@ -12,7 +12,7 @@ public class World implements IScreen.IRenderable {
 
     public void initWorld() {
         player = new Player();
-        block = new Block(0, 0, 80, 32, Material.Type.BOAT);
+        block = new Block(100, 100, 80, 32, Material.Type.BOAT);
     }
 
     @Override

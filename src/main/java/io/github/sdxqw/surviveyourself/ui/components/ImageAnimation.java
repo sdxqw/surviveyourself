@@ -69,5 +69,6 @@ public class ImageAnimation {
 
     public void cleanup() {
         frameLocations.forEach(e -> resourceManager.deleteImage(e.getId()));
+        frameLocations.clear();
     }
 }
