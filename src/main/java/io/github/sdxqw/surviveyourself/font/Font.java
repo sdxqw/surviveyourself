@@ -7,8 +7,6 @@ import org.lwjgl.nanovg.NanoVG;
 
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
