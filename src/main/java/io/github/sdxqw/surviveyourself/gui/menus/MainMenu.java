@@ -14,7 +14,7 @@ public class MainMenu implements InputManager.MouseHandler, IScreen, IScreen.Ren
     @Override
     public void initScreen(long nvg, long window) {
         Core.getTheCore().getTheInputManager().registerMouseHandler(this);
-        playButton = new PlayButton(100, 100, 90, 60);
+        playButton = new PlayButton(Utils.width >> 1, Utils.height >> 1, 120, 80);
     }
 
     @Override

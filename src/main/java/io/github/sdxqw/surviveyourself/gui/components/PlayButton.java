@@ -8,13 +8,13 @@ import io.github.sdxqw.surviveyourself.world.World;
 import org.lwjgl.glfw.GLFW;
 
 public class PlayButton implements InputManager.MouseHandler, IComponent, IComponent.Updatable {
-    private final int x;
-    private final int y;
-    private final int width;
-    private final int height;
+    private final float x;
+    private final float y;
+    private final float width;
+    private final float height;
     private ImageAnimation playButtonImage;
 
-    public PlayButton(int x, int y, int width, int height) {
+    public PlayButton(float x, float y, float width, float height) {
         this.x = x;
         this.y = y;
         this.width = width;
