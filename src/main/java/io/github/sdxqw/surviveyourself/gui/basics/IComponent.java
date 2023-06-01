@@ -1,4 +1,4 @@
-package io.github.sdxqw.surviveyourself.ui.basics;
+package io.github.sdxqw.surviveyourself.gui.basics;
 
 public interface IComponent {
 

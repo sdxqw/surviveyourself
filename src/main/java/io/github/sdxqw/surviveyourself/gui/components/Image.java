@@ -1,4 +1,4 @@
-package io.github.sdxqw.surviveyourself.ui.components;
+package io.github.sdxqw.surviveyourself.gui.components;
 
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
 import io.github.sdxqw.surviveyourself.handling.ResourceManager;

@@ -1,11 +1,11 @@
 package io.github.sdxqw.surviveyourself;
 
 import io.github.sdxqw.surviveyourself.font.FontManager;
+import io.github.sdxqw.surviveyourself.gui.basics.IScreen;
+import io.github.sdxqw.surviveyourself.gui.menus.MainMenu;
 import io.github.sdxqw.surviveyourself.handling.InputManager;
 import io.github.sdxqw.surviveyourself.handling.ResourceManager;
 import io.github.sdxqw.surviveyourself.lwjgl.LWJGL;
-import io.github.sdxqw.surviveyourself.ui.basics.IScreen;
-import io.github.sdxqw.surviveyourself.ui.menus.MainMenu;
 import io.github.sdxqw.surviveyourself.world.World;
 import lombok.Getter;
 import org.lwjgl.glfw.GLFW;

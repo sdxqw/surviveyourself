@@ -1,6 +1,6 @@
 package io.github.sdxqw.surviveyourself.font;
 
-import lombok.SneakyThrows;
+import io.github.sdxqw.surviveyourself.logging.SurvivalException;
 import org.lwjgl.nanovg.NVGColor;
 
 /**
@@ -17,9 +17,12 @@ public class FontManager {
      *
      * @param nvg the NanoVG context
      */
-    @SneakyThrows
     public FontManager(long nvg) {
-        font.init(nvg, ROBOTO, "8bit");
+        try {
+            font.init(nvg, ROBOTO, "8bit");
+        } catch (Exception e) {
+            throw new SurvivalException("Failed to load font", e);
+        }
     }
 
     /**

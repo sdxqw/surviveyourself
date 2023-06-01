@@ -1,9 +1,9 @@
-package io.github.sdxqw.surviveyourself.ui.menus;
+package io.github.sdxqw.surviveyourself.gui.menus;
 
 import io.github.sdxqw.surviveyourself.Core;
 import io.github.sdxqw.surviveyourself.handling.InputManager;
-import io.github.sdxqw.surviveyourself.ui.basics.IScreen;
-import io.github.sdxqw.surviveyourself.ui.components.PlayButton;
+import io.github.sdxqw.surviveyourself.gui.basics.IScreen;
+import io.github.sdxqw.surviveyourself.gui.components.PlayButton;
 import io.github.sdxqw.surviveyourself.utils.Utils;
 import org.lwjgl.glfw.GLFW;
 

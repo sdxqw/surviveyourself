@@ -5,6 +5,7 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.nanovg.NVGColor;
 import org.lwjgl.nanovg.NanoVG;
 
+import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.file.Paths;
@@ -24,7 +25,7 @@ public class Font {
      * @param name     the name of the font
      * @param fontName the name of the font file
      */
-    public void init(long nvg, String name, String fontName) throws Exception {
+    public void init(long nvg, String name, String fontName) throws URISyntaxException {
         this.nvg = nvg;
         ByteBuffer fontBuffer = Utils.readFile(Paths.get(Objects.requireNonNull(Utils.class.getResource("/textures/fonts/" + fontName + ".ttf")).toURI()));
         NanoVG.nvgCreateFontMem(nvg, name, fontBuffer, true);
