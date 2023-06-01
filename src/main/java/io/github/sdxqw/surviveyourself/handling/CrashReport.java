@@ -1,5 +1,6 @@
-package io.github.sdxqw.surviveyourself.logging;
+package io.github.sdxqw.surviveyourself.handling;
 
+import io.github.sdxqw.surviveyourself.logging.Logger;
 import lombok.Getter;
 import lombok.ToString;
 

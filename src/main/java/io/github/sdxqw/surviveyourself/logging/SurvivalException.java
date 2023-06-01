@@ -1,5 +1,6 @@
 package io.github.sdxqw.surviveyourself.logging;
 
+import io.github.sdxqw.surviveyourself.handling.CrashReport;
 import lombok.Getter;
 
 @Getter
