@@ -4,7 +4,6 @@ import io.github.sdxqw.surviveyourself.Core;
 import io.github.sdxqw.surviveyourself.handling.InputManager;
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
 import io.github.sdxqw.surviveyourself.ui.basics.IComponent;
-import io.github.sdxqw.surviveyourself.ui.basics.IScreen;
 import io.github.sdxqw.surviveyourself.world.World;
 import org.lwjgl.glfw.GLFW;
 
