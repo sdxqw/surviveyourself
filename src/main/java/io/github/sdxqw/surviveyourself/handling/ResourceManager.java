@@ -1,5 +1,6 @@
 package io.github.sdxqw.surviveyourself.handling;
 
+import io.github.sdxqw.surviveyourself.logging.SurvivalException;
 import io.github.sdxqw.surviveyourself.utils.Utils;
 import lombok.Getter;
 
@@ -36,7 +37,7 @@ public class ResourceManager {
             loadedImages.put(imagePath, imageId);
             return imageId;
         } catch (Exception e) {
-            throw new RuntimeException("Failed to load image: " + imagePath, e);
+            throw new SurvivalException("Failed to load image: " + imagePath, e);
         }
     }
 
