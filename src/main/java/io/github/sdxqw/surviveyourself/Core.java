@@ -1,9 +1,9 @@
 package io.github.sdxqw.surviveyourself;
 
+import io.github.sdxqw.surviveyourself.handling.InputManager;
 import io.github.sdxqw.surviveyourself.handling.ResourceManager;
 import io.github.sdxqw.surviveyourself.lwjgl.LWJGL;
-import io.github.sdxqw.surviveyourself.handling.InputManager;
-import io.github.sdxqw.surviveyourself.ui.basics.Screen;
+import io.github.sdxqw.surviveyourself.ui.basics.IScreen;
 import io.github.sdxqw.surviveyourself.ui.menus.MainMenu;
 import io.github.sdxqw.surviveyourself.world.World;
 import lombok.Getter;
@@ -14,37 +14,38 @@ public class Core implements LWJGL {
     @Getter
     private static final Core theCore = new Core();
 
-    private Screen currentScreen;
+    private IScreen currentScreen;
     private ResourceManager resourceManager;
     private World theWorld;
-    private final InputManager inputManager = InputManager.getInstance();
+    private InputManager inputManager;
 
     @Override
     public void start(long nvg, long window) {
         resourceManager = new ResourceManager(nvg);
-        displayUiScreen(new MainMenu(), nvg, window);
+        inputManager = InputManager.getInstance();
+        displayScreen(new MainMenu(), nvg, window);
         setGLFWCallbacks(nvg, window, inputManager);
     }
 
     @Override
     public void update(long nvg, long window, float deltaTime) {
         if (currentScreen != null) {
-            currentScreen.updateScreen(nvg, window, deltaTime);
+            ((IScreen.IRenderable) currentScreen).update(nvg, window, deltaTime);
         }
 
         if (theWorld != null) {
-            theWorld.updateWorld(nvg, window, deltaTime);
+            theWorld.update(nvg, window, deltaTime);
         }
     }
 
     @Override
     public void render(long nvg, long window) {
         if (currentScreen != null) {
-            currentScreen.drawScreen(nvg, window);
+            ((IScreen.IRenderable) currentScreen).render(nvg, window);
         }
 
         if (theWorld != null) {
-            theWorld.renderWorld(nvg, window);
+            theWorld.render(nvg, window);
         }
     }
 
@@ -59,16 +60,15 @@ public class Core implements LWJGL {
         }
     }
 
-    public void displayUiScreen(Screen uiScreen, long nvg, long window) {
-        uiScreen.initScreen(nvg, window);
-        currentScreen = uiScreen;
-    }
-
-    public void displayWorldScreen() {
-        theWorld = new World();
-        theWorld.initWorld();
-
-        currentScreen = null;
+    public void displayScreen(IScreen.IRenderable uiScreen, long nvg, long window) {
+        if (uiScreen instanceof World) {
+            theWorld = (World) uiScreen;
+            theWorld.initWorld();
+            currentScreen = null;
+        } else {
+            ((IScreen) uiScreen).initScreen(nvg, window);
+            currentScreen = (IScreen) uiScreen;
+        }
     }
 
     private void setGLFWCallbacks(long nvg, long window, InputManager inputManager) {

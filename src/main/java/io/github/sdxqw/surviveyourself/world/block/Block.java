@@ -2,12 +2,12 @@ package io.github.sdxqw.surviveyourself.world.block;
 
 import io.github.sdxqw.surviveyourself.Core;
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
-import io.github.sdxqw.surviveyourself.ui.basics.Component;
+import io.github.sdxqw.surviveyourself.ui.basics.IComponent;
 import io.github.sdxqw.surviveyourself.ui.components.Image;
 import lombok.Getter;
 
 @Getter
-public class Block implements Component {
+public class Block implements IComponent, IComponent.Updatable {
 
     private final Image blockImage;
 

@@ -1,12 +1,14 @@
 package io.github.sdxqw.surviveyourself.ui.components;
 
 import io.github.sdxqw.surviveyourself.Core;
-import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
-import io.github.sdxqw.surviveyourself.ui.basics.Component;
 import io.github.sdxqw.surviveyourself.handling.InputManager;
+import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
+import io.github.sdxqw.surviveyourself.ui.basics.IComponent;
+import io.github.sdxqw.surviveyourself.ui.basics.IScreen;
+import io.github.sdxqw.surviveyourself.world.World;
 import org.lwjgl.glfw.GLFW;
 
-public class PlayButton implements InputManager.MouseHandler, Component {
+public class PlayButton implements InputManager.MouseHandler, IComponent, IComponent.Updatable {
     private final int x;
     private final int y;
     private final int width;
@@ -46,11 +48,11 @@ public class PlayButton implements InputManager.MouseHandler, Component {
     @Override
     public void handleMouseInput(long nvg, long window, int button, int action, double xPos, double yPos) {
         if (button == GLFW.GLFW_MOUSE_BUTTON_LEFT && action == GLFW.GLFW_PRESS && xPos >= x && xPos <= x + width && yPos >= y && yPos <= y + height) {
-            Core.getTheCore().displayWorldScreen();
+            Core.getTheCore().displayScreen(new World(), nvg, window);
         }
 
         if (xPos >= x && xPos <= x + width && yPos >= y && yPos <= y + height) {
-            playButtonImage.setAnimationRange(0 ,1);
+            playButtonImage.setAnimationRange(0, 1);
         } else {
             playButtonImage.setCurrentFrameIndex(0);
         }

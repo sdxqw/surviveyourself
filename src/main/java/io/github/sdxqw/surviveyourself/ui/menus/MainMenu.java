@@ -2,28 +2,27 @@ package io.github.sdxqw.surviveyourself.ui.menus;
 
 import io.github.sdxqw.surviveyourself.Core;
 import io.github.sdxqw.surviveyourself.handling.InputManager;
-import io.github.sdxqw.surviveyourself.ui.basics.Screen;
+import io.github.sdxqw.surviveyourself.ui.basics.IScreen;
 import io.github.sdxqw.surviveyourself.ui.components.PlayButton;
 import org.lwjgl.glfw.GLFW;
 
-public class MainMenu implements InputManager.MouseHandler, Screen {
+public class MainMenu implements InputManager.MouseHandler, IScreen, IScreen.IRenderable {
 
     private PlayButton playButton;
 
     @Override
     public void initScreen(long nvg, long window) {
-        Core.getTheCore().getInputManager().unregisterMouseHandler(this);
         Core.getTheCore().getInputManager().registerMouseHandler(this);
         playButton = new PlayButton(100, 100, 90, 60);
     }
 
     @Override
-    public void drawScreen(long nvg, long window) {
+    public void render(long nvg, long window) {
         playButton.render(nvg, window);
     }
 
     @Override
-    public void updateScreen(long nvg, long window, float deltaTime) {
+    public void update(long nvg, long window, float deltaTime) {
         playButton.update(nvg, window, deltaTime);
     }
 

@@ -2,7 +2,7 @@ package io.github.sdxqw.surviveyourself.world.entity;
 
 import io.github.sdxqw.surviveyourself.Core;
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
-import io.github.sdxqw.surviveyourself.ui.basics.Component;
+import io.github.sdxqw.surviveyourself.ui.basics.IComponent;
 import io.github.sdxqw.surviveyourself.handling.InputManager;
 import io.github.sdxqw.surviveyourself.ui.components.ImageAnimation;
 import io.github.sdxqw.surviveyourself.utils.Utils;
@@ -10,7 +10,7 @@ import lombok.Getter;
 import org.lwjgl.glfw.GLFW;
 
 @Getter
-public class Player implements InputManager.KeyboardHandler, Component {
+public class Player implements InputManager.KeyboardHandler, IComponent, IComponent.Updatable {
 
     private final float speed = 1.2f;
     private final ImageAnimation playerSkin;

@@ -21,9 +21,6 @@ public class InputManager {
     private double mouseX;
     private double mouseY;
 
-    private int actionNew;
-    private int buttonNew;
-
     public InputManager() {
         keyHandlers = new HashMap<>();
         mouseHandlers = new ArrayList<>();
@@ -35,14 +32,6 @@ public class InputManager {
 
     public void registerMouseHandler(MouseHandler inputHandler) {
         mouseHandlers.add(inputHandler);
-    }
-
-    public void unregisterKeyHandler(int keyCode, KeyboardHandler inputHandler) {
-        keyHandlers.get(keyCode).remove(inputHandler);
-    }
-
-    public void unregisterMouseHandler(MouseHandler inputHandler) {
-        mouseHandlers.remove(inputHandler);
     }
 
     public GLFWKeyCallback createKeyCallback(long nvg) {
@@ -62,7 +51,6 @@ public class InputManager {
             public void invoke(long window, double xpos, double ypos) {
                 mouseX = xpos;
                 mouseY = ypos;
-                handleMouseInput(nvg, window, buttonNew, actionNew);
             }
         };
     }
@@ -71,8 +59,6 @@ public class InputManager {
         return new GLFWMouseButtonCallback() {
             @Override
             public void invoke(long window, int button, int action, int mods) {
-                buttonNew = button;
-                actionNew = action;
                 handleMouseInput(nvg, window, button, action);
             }
         };

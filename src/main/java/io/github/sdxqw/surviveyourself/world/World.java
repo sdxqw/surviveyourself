@@ -1,10 +1,11 @@
 package io.github.sdxqw.surviveyourself.world;
 
+import io.github.sdxqw.surviveyourself.ui.basics.IScreen;
 import io.github.sdxqw.surviveyourself.world.block.Block;
 import io.github.sdxqw.surviveyourself.world.block.Material;
 import io.github.sdxqw.surviveyourself.world.entity.Player;
 
-public class World {
+public class World implements IScreen.IRenderable {
 
     private Player player;
     private Block block;
@@ -14,12 +15,14 @@ public class World {
         block = new Block(0, 0, 80, 32, Material.Type.BOAT);
     }
 
-    public void renderWorld(long nvg, long window) {
+    @Override
+    public void render(long nvg, long window) {
         block.render(nvg, window);
         player.render(nvg, window);
     }
 
-    public void updateWorld(long nvg, long window, float deltaTime) {
+    @Override
+    public void update(long nvg, long window, float deltaTime) {
         player.update(nvg, window, deltaTime);
         player.collision(block.getX(), block.getY(), block.getWidth(), block.getHeight());
     }
