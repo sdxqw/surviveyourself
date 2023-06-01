@@ -33,7 +33,7 @@ public class Core implements LWJGL {
     @Override
     public void update(long nvg, long window, float deltaTime) {
         if (theCurrentScreen != null) {
-            ((IScreen.IRenderable) theCurrentScreen).update(nvg, window, deltaTime);
+            ((IScreen.Render) theCurrentScreen).update(nvg, window, deltaTime);
         }
 
         if (theWorld != null) {
@@ -44,7 +44,7 @@ public class Core implements LWJGL {
     @Override
     public void render(long nvg, long window) {
         if (theCurrentScreen != null) {
-            ((IScreen.IRenderable) theCurrentScreen).render(nvg, window);
+            ((IScreen.Render) theCurrentScreen).render(nvg, window);
         }
 
         if (theWorld != null) {
@@ -63,7 +63,7 @@ public class Core implements LWJGL {
         }
     }
 
-    public void displayScreen(IScreen.IRenderable uiScreen, long nvg, long window) {
+    public void displayScreen(IScreen.Render uiScreen, long nvg, long window) {
         if (uiScreen instanceof World) {
             theWorld = (World) uiScreen;
             theWorld.initWorld();

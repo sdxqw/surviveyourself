@@ -5,7 +5,7 @@ import io.github.sdxqw.surviveyourself.world.block.Block;
 import io.github.sdxqw.surviveyourself.world.block.Material;
 import io.github.sdxqw.surviveyourself.world.entity.Player;
 
-public class World implements IScreen.IRenderable {
+public class World implements IScreen.Render {
 
     private Player player;
     private Block block;

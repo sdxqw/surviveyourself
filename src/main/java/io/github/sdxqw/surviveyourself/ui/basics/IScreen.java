@@ -5,7 +5,7 @@ public interface IScreen {
 
     void clearScreen(long nvg, long window);
 
-    interface IRenderable {
+    interface Render {
         void render(long nvg, long window);
         void update(long nvg, long window, float deltaTime);
     }
