@@ -1,9 +1,9 @@
 package io.github.sdxqw.surviveyourself.gui.components;
 
 import io.github.sdxqw.surviveyourself.Core;
+import io.github.sdxqw.surviveyourself.gui.basics.IComponent;
 import io.github.sdxqw.surviveyourself.handling.InputManager;
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
-import io.github.sdxqw.surviveyourself.gui.basics.IComponent;
 import io.github.sdxqw.surviveyourself.world.World;
 import org.lwjgl.glfw.GLFW;
 

@@ -4,11 +4,12 @@ import lombok.Getter;
 
 public class Material {
     @Getter
-    public enum Type  {
+    public enum Type {
 
         DIRT("dirt"), BOAT("Boat");
 
         final String name;
+
         Type(String name) {
             this.name = name;
         }

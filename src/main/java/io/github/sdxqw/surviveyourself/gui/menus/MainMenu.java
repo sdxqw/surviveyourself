@@ -1,9 +1,9 @@
 package io.github.sdxqw.surviveyourself.gui.menus;
 
 import io.github.sdxqw.surviveyourself.Core;
-import io.github.sdxqw.surviveyourself.handling.InputManager;
 import io.github.sdxqw.surviveyourself.gui.basics.IScreen;
 import io.github.sdxqw.surviveyourself.gui.components.PlayButton;
+import io.github.sdxqw.surviveyourself.handling.InputManager;
 import io.github.sdxqw.surviveyourself.utils.Utils;
 import org.lwjgl.glfw.GLFW;
 
@@ -20,7 +20,7 @@ public class MainMenu implements InputManager.MouseHandler, IScreen, IScreen.Ren
     @Override
     public void render(long nvg, long window) {
         playButton.render(nvg, window);
-        Core.getTheCore().getTheFontManager().drawRobotoText("ciao", Utils.width >> 1, Utils.height >> 1, 15f, Utils.color(1f,1f,1f,1f));
+        Core.getTheCore().getTheFontManager().drawRobotoText("ciao", Utils.width >> 1, Utils.height >> 1, 15f, Utils.color(1f, 1f, 1f, 1f));
     }
 
     @Override

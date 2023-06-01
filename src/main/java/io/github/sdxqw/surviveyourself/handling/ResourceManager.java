@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import static org.lwjgl.nanovg.NanoVG.*;
+import static org.lwjgl.nanovg.NanoVG.nvgCreateImageMem;
+import static org.lwjgl.nanovg.NanoVG.nvgDeleteImage;
 
 public class ResourceManager {
     private static final int NVG_IMAGE_GENERATE_MIPMAPS = 1;

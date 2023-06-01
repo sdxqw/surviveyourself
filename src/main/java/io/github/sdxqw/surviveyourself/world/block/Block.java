@@ -1,9 +1,9 @@
 package io.github.sdxqw.surviveyourself.world.block;
 
 import io.github.sdxqw.surviveyourself.Core;
-import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
 import io.github.sdxqw.surviveyourself.gui.basics.IComponent;
 import io.github.sdxqw.surviveyourself.gui.components.Image;
+import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
 import lombok.Getter;
 
 @Getter
