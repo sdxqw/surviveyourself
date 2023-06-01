@@ -7,7 +7,7 @@ import io.github.sdxqw.surviveyourself.ui.components.PlayButton;
 import io.github.sdxqw.surviveyourself.utils.Utils;
 import org.lwjgl.glfw.GLFW;
 
-public class MainMenu implements InputManager.MouseHandler, IScreen, IScreen.Render {
+public class MainMenu implements InputManager.MouseHandler, IScreen, IScreen.Renderable {
 
     private PlayButton playButton;
 
