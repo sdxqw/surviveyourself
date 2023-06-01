@@ -14,7 +14,7 @@ import static org.lwjgl.nanovg.NanoVG.*;
 
 public class Utils {
     public static int width = 1280;
-    public static int height = 820;
+    public static int height = 720;
 
 
     public static ByteBuffer readFile(Path path) {
