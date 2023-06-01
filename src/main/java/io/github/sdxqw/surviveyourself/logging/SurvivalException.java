@@ -19,9 +19,4 @@ public class SurvivalException extends RuntimeException {
     private void handleCrashReport() {
         CrashReport.makeCrashReport(this, super.getMessage());
     }
-
-    @Override
-    public String getMessage() {
-        return "SurvivalException: " + super.getMessage();
-    }
 }
