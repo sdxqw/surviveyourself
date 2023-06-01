@@ -1,6 +1,7 @@
 package io.github.sdxqw.surviveyourself.utils;
 
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
+import io.github.sdxqw.surviveyourself.logging.SurvivalException;
 import org.lwjgl.nanovg.NVGColor;
 import org.lwjgl.nanovg.NVGPaint;
 
@@ -19,13 +20,13 @@ public class Utils {
 
     public static ByteBuffer readFile(Path path) {
         try (FileChannel fc = FileChannel.open(path, StandardOpenOption.READ)) {
-            if (fc.size() == 0) throw new RuntimeException("File is empty: " + path);
+            if (fc.size() == 0) throw new SurvivalException("File is empty: " + path);
             ByteBuffer buffer = ByteBuffer.allocateDirect(Math.toIntExact(fc.size()));
-            if (fc.read(buffer) == -1) throw new IOException("Failed to read from file: " + path);
+            if (fc.read(buffer) == -1) throw new SurvivalException("Failed to read from file: " + path);
             buffer.flip();
             return buffer;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new SurvivalException(e.getMessage(), e);
         }
     }
 
