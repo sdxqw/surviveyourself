@@ -27,7 +27,7 @@ public class Player implements InputManager.KeyboardHandler, IComponent, ICompon
         InputManager.getInstance().registerKeyHandler(GLFW.GLFW_KEY_A, this);
         InputManager.getInstance().registerKeyHandler(GLFW.GLFW_KEY_S, this);
         InputManager.getInstance().registerKeyHandler(GLFW.GLFW_KEY_D, this);
-        this.playerSkin = new ImageAnimation(Core.getTheCore().getResourceManager(), 0.3f);
+        this.playerSkin = new ImageAnimation(Core.getTheCore().getTheResourceManager(), 0.3f);
         this.playerSkin.addFrame(
                 new ResourceLocation("/textures/player/forward/fw1.png"),
                 new ResourceLocation("/textures/player/forward/fw2.png"),
@@ -49,7 +49,7 @@ public class Player implements InputManager.KeyboardHandler, IComponent, ICompon
         playerSkin.render(x, y, 120, 120, 255);
     }
 
-    public void collision(int x, int y, int width, int height) {
+    public void collision(float x, float y, float width, float height) {
         // Check if the player's bounding box intersects with the collision object
         if (this.x < x + width && this.x + 120 > x && this.y < y + height && this.y + 120 > y) {
             // If there's a collision, stop the player from moving in the direction of the collision

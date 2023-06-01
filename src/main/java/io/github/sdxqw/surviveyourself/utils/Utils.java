@@ -1,6 +1,7 @@
 package io.github.sdxqw.surviveyourself.utils;
 
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
+import org.lwjgl.nanovg.NVGColor;
 import org.lwjgl.nanovg.NVGPaint;
 
 import java.io.IOException;
@@ -34,5 +35,9 @@ public class Utils {
         nvgRect(nvg, x, y, width, height);
         nvgFillPaint(nvg, paint);
         nvgFill(nvg);
+    }
+
+    public static NVGColor color(float r, float g, float b, float a) {
+        return NVGColor.calloc().a(a).r(r).g(g).b(b);
     }
 }

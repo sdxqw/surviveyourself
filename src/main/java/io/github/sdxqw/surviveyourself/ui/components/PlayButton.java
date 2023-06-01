@@ -23,7 +23,7 @@ public class PlayButton implements InputManager.MouseHandler, IComponent, ICompo
     }
 
     private void initButton() {
-        this.playButtonImage = new ImageAnimation(Core.getTheCore().getResourceManager(), 0.5f);
+        this.playButtonImage = new ImageAnimation(Core.getTheCore().getTheResourceManager(), 0.5f);
         this.playButtonImage.addFrame(
                 new ResourceLocation("/textures/ui/button/play_button1.png"),
                 new ResourceLocation("/textures/ui/button/play_button2.png"));

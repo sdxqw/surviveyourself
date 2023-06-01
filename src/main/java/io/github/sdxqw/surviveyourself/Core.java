@@ -1,5 +1,6 @@
 package io.github.sdxqw.surviveyourself;
 
+import io.github.sdxqw.surviveyourself.font.FontManager;
 import io.github.sdxqw.surviveyourself.handling.InputManager;
 import io.github.sdxqw.surviveyourself.handling.ResourceManager;
 import io.github.sdxqw.surviveyourself.lwjgl.LWJGL;
@@ -14,23 +15,25 @@ public class Core implements LWJGL {
     @Getter
     private static final Core theCore = new Core();
 
-    private IScreen currentScreen;
-    private ResourceManager resourceManager;
+    private IScreen theCurrentScreen;
+    private ResourceManager theResourceManager;
     private World theWorld;
-    private InputManager inputManager;
+    private InputManager theInputManager;
+    private FontManager theFontManager;
 
     @Override
     public void start(long nvg, long window) {
-        resourceManager = new ResourceManager(nvg);
-        inputManager = InputManager.getInstance();
+        theResourceManager = new ResourceManager(nvg);
+        theFontManager = new FontManager(nvg);
+        theInputManager = InputManager.getInstance();
         displayScreen(new MainMenu(), nvg, window);
-        setGLFWCallbacks(nvg, window, inputManager);
+        setGLFWCallbacks(nvg, window, theInputManager);
     }
 
     @Override
     public void update(long nvg, long window, float deltaTime) {
-        if (currentScreen != null) {
-            ((IScreen.IRenderable) currentScreen).update(nvg, window, deltaTime);
+        if (theCurrentScreen != null) {
+            ((IScreen.IRenderable) theCurrentScreen).update(nvg, window, deltaTime);
         }
 
         if (theWorld != null) {
@@ -40,8 +43,8 @@ public class Core implements LWJGL {
 
     @Override
     public void render(long nvg, long window) {
-        if (currentScreen != null) {
-            ((IScreen.IRenderable) currentScreen).render(nvg, window);
+        if (theCurrentScreen != null) {
+            ((IScreen.IRenderable) theCurrentScreen).render(nvg, window);
         }
 
         if (theWorld != null) {
@@ -51,8 +54,8 @@ public class Core implements LWJGL {
 
     @Override
     public void stop(long nvg, long window) {
-        if (currentScreen != null) {
-            currentScreen.clearScreen(nvg, window);
+        if (theCurrentScreen != null) {
+            theCurrentScreen.clearScreen(nvg, window);
         }
 
         if (theWorld != null) {
@@ -64,10 +67,10 @@ public class Core implements LWJGL {
         if (uiScreen instanceof World) {
             theWorld = (World) uiScreen;
             theWorld.initWorld();
-            currentScreen = null;
+            theCurrentScreen = null;
         } else {
             ((IScreen) uiScreen).initScreen(nvg, window);
-            currentScreen = (IScreen) uiScreen;
+            theCurrentScreen = (IScreen) uiScreen;
         }
     }
 
