@@ -1,6 +1,6 @@
 package io.github.sdxqw.surviveyourself.world;
 
-import io.github.sdxqw.surviveyourself.ui.basics.IScreen;
+import io.github.sdxqw.surviveyourself.gui.basics.IScreen;
 import io.github.sdxqw.surviveyourself.world.block.Block;
 import io.github.sdxqw.surviveyourself.world.block.Material;
 import io.github.sdxqw.surviveyourself.world.entity.Player;

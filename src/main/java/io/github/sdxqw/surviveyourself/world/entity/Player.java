@@ -2,9 +2,9 @@ package io.github.sdxqw.surviveyourself.world.entity;
 
 import io.github.sdxqw.surviveyourself.Core;
 import io.github.sdxqw.surviveyourself.handling.ResourceLocation;
-import io.github.sdxqw.surviveyourself.ui.basics.IComponent;
+import io.github.sdxqw.surviveyourself.gui.basics.IComponent;
 import io.github.sdxqw.surviveyourself.handling.InputManager;
-import io.github.sdxqw.surviveyourself.ui.components.ImageAnimation;
+import io.github.sdxqw.surviveyourself.gui.components.ImageAnimation;
 import io.github.sdxqw.surviveyourself.utils.Utils;
 import lombok.Getter;
 import org.lwjgl.glfw.GLFW;
